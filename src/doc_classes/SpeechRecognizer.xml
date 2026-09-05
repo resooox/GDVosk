@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="SpeechRecognizer" inherits="Node" api_type="extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		A node for performing speech recognition using the Vosk library.
+	</brief_description>
+	<description>
+		A node for performing speech recognition using the Vosk library. It allows you to recognize speech from audio input and emit signals when keywords are detected.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_keywords" qualifiers="const">
+			<return type="PackedStringArray" />
+			<description>
+				Returns the list of keywords that the recognizer is currently listening for.
+			</description>
+		</method>
+		<method name="send_waveform_pcm">
+			<return type="void" />
+			<param index="0" name="data" type="PackedByteArray" />
+			<description>
+				Sends a chunk of PCM waveform data to the recognizer for processing. The data should be in 16-bit PCM format.
+			</description>
+		</method>
+		<method name="set_keywords">
+			<return type="void" />
+			<param index="0" name="words" type="PackedStringArray" />
+			<description>
+				Sets the list of keywords that the recognizer should listen for. The recognizer will emit a signal when any of these keywords are detected in the audio input. This drastically improves the accuracy of the recognizer when you only need to listen for specific words or phrases.
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="language_model" type="SpeechModel" setter="set_language_model" getter="get_language_model">
+			The language model used by the recognizer for speech recognition. This should be a reference to a SpeechModel resource that contains the path to a Vosk speech model.
+		</member>
+		<member name="sample_rate" type="float" setter="set_sample_rate" getter="get_sample_rate" default="16000.0">
+			The sample rate of the audio input that the recognizer expects. The default value is 16000.0 Hz, which is a common sample rate for speech recognition tasks.
+		</member>
+	</members>
+	<signals>
+		<signal name="partial_result">
+			<param index="0" name="text" type="String" />
+			<description>
+				Emits when the recognizer has a partial result of the speech recognition. This signal is emitted frequently as the recognizer processes the audio input, providing intermediate results before the final result is available.
+			</description>
+		</signal>
+		<signal name="result">
+			<param index="0" name="text" type="String" />
+			<description>
+				Emits when the recognizer has a final result of the speech recognition. This signal is emitted when the recognizer has completed processing a segment of audio input and has determined the recognized text.
+			</description>
+		</signal>
+	</signals>
+</class>

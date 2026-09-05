@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://gpi0n0jwku2u"]
+
+[ext_resource type="Script" uid="uid://c46r40qobi7d4" path="res://speech_recognizer.gd" id="1_37kl0"]
+
+[sub_resource type="SpeechModel" id="SpeechModel_7h3el"]
+model_path = "res://models/vosk-model-small-en-us-0.15"
+
+[node name="SpeechRecognizer" type="SpeechRecognizer" unique_id=1073452666]
+language_model = SubResource("SpeechModel_7h3el")
+script = ExtResource("1_37kl0")
+
+[connection signal="partial_result" from="." to="." method="_on_partial_result"]
+[connection signal="result" from="." to="." method="_on_result"]

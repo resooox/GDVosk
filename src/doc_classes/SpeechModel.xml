@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="SpeechModel" inherits="Resource" api_type="extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		A Resource that holds a path to a Vosk Speech Model.
+	</brief_description>
+	<description>
+		A Speech Model Resource that represents a Vosk speech recognition model. It allows you to load and manage the model for speech recognition tasks. You can download Vosk language models from [url=https://alphacephei.com/vosk/models]This Website[/url]. After downloading, you can set the model path in the SpeechModel Resource to point to the directory containing the model files. The model path should be a valid directory path where the Vosk model is located.
+	</description>
+	<tutorials>
+	</tutorials>
+	<members>
+		<member name="model_path" type="String" setter="set_model_path" getter="get_model_path" default="&quot;&quot;">
+		</member>
+	</members>
+</class>

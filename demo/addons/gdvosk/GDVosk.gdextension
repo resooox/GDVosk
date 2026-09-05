@@ -1,0 +1,27 @@
+[configuration]
+
+entry_symbol = "vosk_library_init"
+compatibility_minimum = "4.4"
+reloadable = true
+
+[libraries]
+
+windows.debug.x86_64 = "res://addons/gdvosk/libgdvosk.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "res://addons/gdvosk/libgdvosk.windows.template_release.x86_64.dll"
+
+[dependencies]
+windows.editor.x86_64 = {
+    "res://addons/libgcc_s_seh-1.dll" : "",
+    "res://addons/libstdc++-6.dll" : "",
+    "res://addons/libwinpthread-1.dll" : ""
+}
+windows.debug.x86_64 = {
+    "res://addons/libgcc_s_seh-1.dll" : "",
+    "res://addons/libstdc++-6.dll" : "",
+    "res://addons/libwinpthread-1.dll" : ""
+}
+windows.release.x86_64 = {
+    "res://addons/libgcc_s_seh-1.dll" : "",
+    "res://addons/libstdc++-6.dll" : "",
+    "res://addons/libwinpthread-1.dll" : ""
+}
