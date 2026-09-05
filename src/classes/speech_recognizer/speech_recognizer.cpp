@@ -14,11 +14,6 @@
  * limitations under the License.
  */
 
-#include <godot_cpp/classes/json.hpp>
-#include <godot_cpp/classes/engine.hpp>
-#include <godot_cpp/classes/worker_thread_pool.hpp>
-#include <godot_cpp/variant/utility_functions.hpp>
-
 #include "speech_recognizer.hpp"
 
 using namespace godot;
@@ -106,21 +101,12 @@ void SpeechRecognizer::send_waveform_pcm(const PackedByteArray &data) {
             last_partial = "";
         } else {
             String current_partial = String::utf8(vosk_recognizer_partial_result(recognizer));
-            Ref<JSON> json;
-            json.instantiate();
-            Error err = json->parse(current_partial);
-            if (err == OK) {
-                Dictionary result = json->get_data();
-                if (result.has("partial")) {
-                    String partial_text = result["partial"];
-                    if (partial_text != last_partial) {
-                        last_partial = partial_text;
-                        call_deferred("emit_signal", "partial_result", partial_text);
-                    }
+                if (current_partial != last_partial) {
+                    last_partial = current_partial;
+                    call_deferred("emit_signal", "partial_result", current_partial);
+                }
                 }
             }
-        }
-    }
 }
 
 Ref<SpeechModel> SpeechRecognizer::get_language_model() const {
