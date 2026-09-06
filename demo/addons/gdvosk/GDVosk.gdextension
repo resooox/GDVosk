@@ -6,22 +6,26 @@ reloadable = true
 
 [libraries]
 
-windows.debug.x86_64 = "res://addons/gdvosk/libgdvosk.windows.template_debug.x86_64.dll"
-windows.release.x86_64 = "res://addons/gdvosk/libgdvosk.windows.template_release.x86_64.dll"
+windows.debug.x86_64 = "res://addons/gdvosk/windows/libgdvosk.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "res://addons/gdvosk/windows/libgdvosk.windows.template_release.x86_64.dll"
+linux.release.x86_64 = "res://addons/gdvosk/linux/libgdvosk.linux.template_release.x86_64.so"
+macos.release = "res://addons/gdvosk/macos/libgdvosk.macos.template_release.framework"
 
 [dependencies]
-windows.editor.x86_64 = {
-    "res://addons/libgcc_s_seh-1.dll" : "",
-    "res://addons/libstdc++-6.dll" : "",
-    "res://addons/libwinpthread-1.dll" : ""
-}
+
 windows.debug.x86_64 = {
-    "res://addons/libgcc_s_seh-1.dll" : "",
-    "res://addons/libstdc++-6.dll" : "",
-    "res://addons/libwinpthread-1.dll" : ""
+    "res://addons/gdvosk/windows/libgcc_s_seh-1.dll" : "",
+    "res://addons/gdvosk/windows/libstdc++-6.dll" : "",
+    "res://addons/gdvosk/windows/libwinpthread-1.dll" : ""
 }
 windows.release.x86_64 = {
-    "res://addons/libgcc_s_seh-1.dll" : "",
-    "res://addons/libstdc++-6.dll" : "",
-    "res://addons/libwinpthread-1.dll" : ""
+    "res://addons/gdvosk/windows/libgcc_s_seh-1.dll" : "",
+    "res://addons/gdvosk/windows/libstdc++-6.dll" : "",
+    "res://addons/gdvosk/windows/libwinpthread-1.dll" : ""
+}
+linux.release.x86_64 = {
+    "res://addons/gdvosk/linux/libvosk.so" : ""
+}
+macos.release = {
+    "res://addons/gdvosk/macos/libvosk.dylib" : ""
 }

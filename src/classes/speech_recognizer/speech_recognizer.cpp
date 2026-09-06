@@ -105,8 +105,8 @@ void SpeechRecognizer::send_waveform_pcm(const PackedByteArray &data) {
                     last_partial = current_partial;
                     call_deferred("emit_signal", "partial_result", current_partial);
                 }
-                }
             }
+        }
 }
 
 Ref<SpeechModel> SpeechRecognizer::get_language_model() const {
