@@ -27,7 +27,7 @@ jobs:
         run: pip install scons
 
       - name: Build release
-        run: scons platform=${{ matrix.platform }} target=template_release arch=${{ matrix.arch }} -j4
+        run: scons platform=${{ matrix.platform }} api_version=4.7 target=template_release arch=${{ matrix.arch }} -j4
 
       - name: Build debug
         run: scons platform=${{ matrix.platform }} target=template_debug arch=${{ matrix.arch }} -j4
