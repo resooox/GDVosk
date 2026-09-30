@@ -71,8 +71,7 @@ void SpeechRecognizer::init_recognizer() {
     VoskModel *vosk_model = speech_model->get_model();
     ERR_FAIL_NULL_MSG(vosk_model, "Failed to get Vosk model.");
 
-    VoskRecognizer *vosk_recognizer = vosk_recognizer_new(vosk_model, sample_rate);
-    ERR_FAIL_NULL_MSG(vosk_recognizer, "Failed to create Vosk Recognizer.");
+    VoskRecognizer *vosk_recognizer = nullptr;
 
     if (!keywords.is_empty()) {
         PackedStringArray parts;
@@ -81,8 +80,12 @@ void SpeechRecognizer::init_recognizer() {
             parts[i] = "\"" + keywords[i].to_lower() + "\"";
         }
         String grammar = "[" + String(",").join(parts) + ",\"[unk]\"]";
-        vosk_recognizer_set_grm(vosk_recognizer, grammar.utf8().get_data());
+        vosk_recognizer = vosk_recognizer_new_grm(vosk_model, sample_rate, grammar.utf8().get_data());
+    } else {
+        vosk_recognizer = vosk_recognizer_new(vosk_model, sample_rate);
     }
+    ERR_FAIL_NULL_MSG(vosk_recognizer, "Failed to create Vosk Recognizer.");
+
     last_partial = "";
     recognizer = vosk_recognizer;
 }
