@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 
-env = SConscript("godot-cpp/SConstruct")
+env = SConscript("godot-cpp/SConstruct", {"api_version": "4.4"})
 
 env.Append(CPPPATH=["src/"])
 sources = [
