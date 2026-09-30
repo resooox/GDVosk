@@ -27,7 +27,7 @@ platform_dir = os.path.join(addon_dir, env["platform"])
 
 # macOS ships as a flat Mach-O file named ".framework" (not a real bundle)
 if env["platform"] == "macos":
-    lib_filename = "libgdvosk.macos.template_release.framework"
+    lib_filename = "libgdvosk.macos.{}.framework".format(env["target"])
     vosk_src = "src/vosk/lib/macos/libvosk.dylib"
     vosk_dst = os.path.join(platform_dir, "libvosk.dylib")
 else:
